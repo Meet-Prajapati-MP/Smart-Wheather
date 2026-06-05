@@ -1,0 +1,302 @@
+/* Page Loader Overlay */
+.pageLoaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.doubleSpinner {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.spinnerOuter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: var(--primary);
+  border-bottom-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.spinnerInner {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 3px solid transparent;
+  border-left-color: var(--secondary);
+  border-right-color: var(--secondary);
+  border-radius: 50%;
+  animation: spin-reverse 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  opacity: 0.8;
+}
+
+.loadingText {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--secondary-light);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Button Spinner */
+.buttonSpinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Skeleton Grid & Shapes */
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skeletonCard {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+.travelSkeleton {
+  grid-column: span 2;
+  min-height: auto;
+}
+
+.headerSkeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.mainSkeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.25rem;
+}
+
+.tempGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.gridSkeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1.5rem;
+}
+
+.gridItemSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.timelineSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timelineItemSkeleton {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.timelineContentSkeleton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shimmer Effect Base */
+.shimmer {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Helper Shimmer Sizes */
+.lineTiny {
+  width: 40%;
+  height: 0.75rem;
+}
+
+.lineSmall {
+  width: 60%;
+  height: 0.9rem;
+}
+
+.lineMedium {
+  width: 75%;
+  height: 1.1rem;
+}
+
+.lineLarge {
+  width: 90%;
+  height: 1.5rem;
+}
+
+.lineFull {
+  width: 100%;
+  height: 1rem;
+}
+
+.lineParagraph {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 6px;
+}
+
+.lineBadge {
+  width: 5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+}
+
+.circleSmall {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.circleMedium {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.circleLarge {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.rectFlag {
+  width: 4.5rem;
+  height: 3rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .travelSkeleton {
+    grid-column: span 1;
+  }
+
+  .gridSkeleton {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .skeletonCard {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  .headerSkeleton {
+    margin-bottom: 1.5rem;
+  }
+
+  .mainSkeleton {
+    margin-bottom: 1.5rem;
+  }
+
+  .circleLarge {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .circleMedium {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .rectFlag {
+    width: 3.75rem;
+    height: 2.5rem;
+  }
+
+  .gridSkeleton {
+    gap: 1rem;
+    padding-top: 1.25rem;
+  }
+}
