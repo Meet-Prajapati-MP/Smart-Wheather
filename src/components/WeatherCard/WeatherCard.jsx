@@ -21,9 +21,9 @@ const WeatherCard = ({ weather }) => {
     dt,
   } = weather;
 
-  const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
-  const displayTemp = Math.round(temp);
-  const displayFeelsLike = Math.round(feels_like);
+  const iconUrl = icon ? `https://openweathermap.org/img/wn/${icon}@4x.png` : '';
+  const displayTemp = temp !== undefined && temp !== null ? Math.round(temp) : 'N/A';
+  const displayFeelsLike = feels_like !== undefined && feels_like !== null ? Math.round(feels_like) : 'N/A';
 
   return (
     <div className={`glass-card ${styles.weatherCard} animate-slide-up`}>

@@ -46,5 +46,11 @@ export const fetchWeather = async (city) => {
   const response = await axios.get('/api/weather', {
     params: { city },
   });
-  return response.data;
+  
+  const data = response.data;
+  if (typeof data === 'string' && (data.includes('<!DOCTYPE html>') || data.includes('<html'))) {
+    throw new Error('Received HTML response instead of JSON. The backend server proxy is not running. If deployed on Vercel, please configure VITE_WEATHER_API_KEY in the Environment Variables.');
+  }
+  
+  return data;
 };

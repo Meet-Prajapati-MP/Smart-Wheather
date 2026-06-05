@@ -51,5 +51,11 @@ export const fetchCountry = async (code) => {
   const response = await axios.get('/api/country', {
     params: { code },
   });
-  return response.data;
+  
+  const data = response.data;
+  if (typeof data === 'string' && (data.includes('<!DOCTYPE html>') || data.includes('<html'))) {
+    throw new Error('Received HTML response instead of JSON. The backend server proxy is not running.');
+  }
+  
+  return data;
 };

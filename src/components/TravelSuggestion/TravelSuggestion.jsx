@@ -5,7 +5,7 @@ const TravelSuggestion = ({ city, weather }) => {
   if (!weather) return null;
 
   const getItinerary = (city, temp, condition) => {
-    const cond = condition.toLowerCase();
+    const cond = (condition || '').toLowerCase();
     
     // 1. Rainy/Stormy/Drizzle
     if (cond.includes('rain') || cond.includes('drizzle') || cond.includes('thunderstorm') || cond.includes('storm')) {
